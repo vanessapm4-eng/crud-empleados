@@ -1,9 +1,7 @@
-const BASE = 'https://crud-empleados-backend.onrender.com/api'
 import { useState } from 'react'
 import axios from 'axios'
 
-const BASE = 'http://localhost:3001/api'
-
+const BASE = 'https://crud-empleados-backend.onrender.com/api'
 function Login({ onLogin }) {
   const [modo, setModo] = useState('login')
   const [form, setForm] = useState({ nombre: '', email: '', password: '', confirmar: '' })

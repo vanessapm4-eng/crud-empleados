@@ -1,9 +1,7 @@
-const BASE = 'https://crud-empleados-backend.onrender.com/api'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
-const BASE = 'http://localhost:3001/api'
-
+const BASE = 'https://crud-empleados-backend.onrender.com/api'
 function UsuariosPanel({ onVolver, usuarioActual }) {
   const [usuarios, setUsuarios] = useState([])
   const [mensaje, setMensaje] = useState(null)

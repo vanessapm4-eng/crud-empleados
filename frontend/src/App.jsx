@@ -1,4 +1,3 @@
-const API = 'https://crud-empleados-backend.onrender.com/api/empleados'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import EmpleadoForm from './components/EmpleadoForm'
@@ -6,7 +5,7 @@ import Informes from './components/Informes'
 import Login from './components/Login'
 import UsuariosPanel from './components/UsuariosPanel'
 
-const API = 'http://localhost:3001/api/empleados'
+const API = 'https://crud-empleados-backend.onrender.com/api/empleados'
 const formVacio = { nombre: '', cargo: '', departamento: '', salario: '', activo: true }
 const fmt = n => new Intl.NumberFormat('es-CO', { style: 'currency', currency: 'COP', maximumFractionDigits: 0 }).format(n)
 const iniciales = n => n.split(' ').slice(0, 2).map(x => x[0]).join('').toUpperCase()
