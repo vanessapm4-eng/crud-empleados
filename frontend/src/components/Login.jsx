@@ -1,3 +1,4 @@
+const BASE = 'https://crud-empleados-backend.onrender.com/api'
 import { useState } from 'react'
 import axios from 'axios'
 

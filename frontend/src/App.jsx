@@ -1,3 +1,4 @@
+const API = 'https://crud-empleados-backend.onrender.com/api/empleados'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import EmpleadoForm from './components/EmpleadoForm'
