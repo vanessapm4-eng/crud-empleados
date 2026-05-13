@@ -11,8 +11,8 @@ function ArbolXml({ xml }) {
     if (linea.trim().startsWith('</')) return '#0F6E56'
     if (linea.trim().startsWith('<empleados')) return '#185FA5'
     if (linea.trim().startsWith('<empleado>')) return '#854F0B'
-    return '#333'
-  }
+    return '#b8adad'
+  } 
 
   const pesoLinea = (linea) => {
     if (linea.trim() === '<empleado>' || linea.trim() === '</empleado>') return 600

@@ -10,7 +10,7 @@ const PORT = process.env.PORT || 3001
 app.use(cors())
 app.use(express.json())
 
-// ── CONEXIÓN MYSQL ────────────────────────────────────────
+// CONEXIÓN MYSQL 
 const pool = mysql.createPool({
   host: process.env.DB_HOST,
   port: process.env.DB_PORT,
@@ -22,7 +22,7 @@ const pool = mysql.createPool({
   connectionLimit: 10,
 })
 
-// ── INICIALIZAR TABLAS ────────────────────────────────────
+// INICIALIZAR TABLAS 
 const init = async () => {
   await pool.execute(`
     CREATE TABLE IF NOT EXISTS empleados (
@@ -56,13 +56,13 @@ const init = async () => {
   if (admins.length === 0) {
     const hash = bcrypt.hashSync('Admin1234', 10)
     await pool.execute('INSERT INTO usuarios (nombre, email, password, rol) VALUES (?, ?, ?, ?)', ['Administrador', 'admin@empresa.com', hash, 'admin'])
-    console.log('✅ Admin creado: admin@empresa.com / Admin1234')
+    console.log(' Admin creado: admin@empresa.com / Admin1234')
   }
 
-  console.log('✅ Base de datos MySQL conectada y lista')
+  console.log(' Base de datos MySQL conectada y lista')
 }
 
-// ── VALIDACIONES ──────────────────────────────────────────
+//  VALIDACIONES 
 function validar(body) {
   const errores = []
   const { nombre, cargo, departamento, salario } = body
@@ -76,7 +76,7 @@ function validar(body) {
 
 const fmt = emp => ({ ...emp, activo: emp.activo === 1 })
 
-// ── AUTH ──────────────────────────────────────────────────
+// AUTH 
 app.post('/api/registro', async (req, res) => {
   const { nombre, email, password } = req.body
   const errores = []
@@ -102,7 +102,7 @@ app.post('/api/login', async (req, res) => {
   res.json({ ok: true, nombre: usuario.nombre, email: usuario.email, rol: usuario.rol })
 })
 
-// ── EMPLEADOS ─────────────────────────────────────────────
+// EMPLEADOS 
 app.get('/api/empleados', async (req, res) => {
   const [rows] = await pool.execute('SELECT * FROM empleados')
   res.json(rows.map(fmt))
@@ -145,7 +145,7 @@ app.delete('/api/empleados/:id', async (req, res) => {
   res.json({ mensaje: 'Empleado eliminado correctamente' })
 })
 
-// ── USUARIOS ──────────────────────────────────────────────
+// USUARIOS
 app.get('/api/usuarios', async (req, res) => {
   const [rows] = await pool.execute('SELECT id, nombre, email, rol FROM usuarios')
   res.json(rows)
