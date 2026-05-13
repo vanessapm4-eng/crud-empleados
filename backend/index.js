@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express')
 const cors = require('cors')
 const bcrypt = require('bcryptjs')
@@ -11,11 +12,11 @@ app.use(express.json())
 
 // ── CONEXIÓN MYSQL ────────────────────────────────────────
 const pool = mysql.createPool({
-  host: process.env.DB_HOST || 'empleados-elpoli-20ea.h.aivencloud.com',
-  port: process.env.DB_PORT || 19476,
-  user: process.env.DB_USER || 'avnadmin',
-  password: process.env.DB_PASSWORD || 'AVNS_f_9Fzu-tVs51T_8v1wd',
-  database: process.env.DB_NAME || 'defaultdb',
+  host: process.env.DB_HOST,
+  port: process.env.DB_PORT,
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   ssl: { rejectUnauthorized: false },
   waitForConnections: true,
   connectionLimit: 10,
